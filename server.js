@@ -64,7 +64,7 @@ app.post("/send-email", async (req, res) => {
         sender: { name: sender, email: "emailgenerator321@gmail.com" }, // Use Brevo-verified email
         to: [{ email: recipientEmail }],
         subject: "Generated Email",
-        htmlContent: `<p>${generatedEmail}</p>`,
+        htmlContent: `<pre>${generatedEmail}</pre>`,
     };
 
     try {
