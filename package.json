@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@huggingface/inference": "^3.3.5",
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.0",
+    "nodemon": "^3.1.9",
+    "openai": "^4.85.2",
+    "sib-api-v3-sdk": "^8.5.0"
+  }
+}
