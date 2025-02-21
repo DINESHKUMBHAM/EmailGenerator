@@ -1,0 +1,194 @@
+/* General Styles */
+/* body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+} */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Remove the old background gradient */
+    /* background: linear-gradient(135deg, #f5f7fa, #c3cfe2); */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+
+    /* New background image code */
+    background-image: url("./background.png"); /* Replace with your image path */
+    background-size: cover; /* or contain, auto, 100% 100%, etc. */
+    background-repeat: no-repeat; /* or repeat, repeat-x, repeat-y */
+    background-position: center center; /* or top left, bottom right, etc. */
+
+    /* If you want a subtle overlay on the image for better text readability */
+    /* background-color: rgba(255, 255, 255, 0.2);  Adjust alpha (0.2) for opacity */
+    /* background-blend-mode: overlay; /* or lighten, darken, multiply, etc. */
+}
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    padding: 40px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #2c3e50;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: calc(100% - 20px);
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    background: #fff;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+.cta-button {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.cta-button:hover {
+    background: #2980b9;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.secondary-button {
+    background: #e0e0e0;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-button:hover {
+    background: #d0d0d0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #666;
+    margin-top: 30px;
+}
+
+.footer-text strong {
+    color: #2c3e50;
+}
+
+.select-bar {
+
+    width: calc(100% + 5px);
+    padding: 14px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+/* ... (Existing CSS) ... */
+
+.container {
+    width: 80%; /* Increased width */
+    max-width: 1200px; /* Increased max-width */
+    /* ... other container styles */
+}
+
+.split-layout {
+    display: flex;
+    gap: 30px; /* Increased gap */
+    align-items: flex-start; /* Align items to the top of the container */
+}
+
+.input-area {
+    flex: 1;
+}
+
+.output-area {
+    flex: 1;
+}
+
+textarea#emailOutput {
+    height: 250px; /* Increased height */
+    width: calc(100% - 20px); /* Ensure it fits within the output area */
+}
+
+/* ... (Rest of your CSS) ... */

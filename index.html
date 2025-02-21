@@ -3,181 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Email Generator</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color: black;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: white;
-            padding: 30px;
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
-            text-align: center;
-            color: black;
-        }
-        .hidden { display: none; }
-        h1, h2 { color: black; font-weight: bold; font-size: 24px; }
-        input, textarea {
-            width: calc(100% - 20px);
-            padding: 14px;
-            margin: 12px 0;
-            border: 1px solid black;
-            border-radius: 10px;
-            font-size: 18px;
-            color: black;
-            transition: 0.3s;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        input:focus, textarea:focus {
-            border-color: black;
-            outline: none;
-            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
-        }
-        button {
-            background: black;
-            color: white;
-            padding: 16px 24px;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            margin: 12px;
-            transition: 0.3s;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        button:hover {
-            background: #333;
-            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
-        }
-        .output-box {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 12px;
-            text-align: left;
-            min-height: 100px;
-            font-size: 18px;
-            border: 1px solid black;
-            color: black;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        .loading {
-            font-style: italic;
-            color: black;
-        }
-    </style>
+    <title>AI Email Generator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container" id="phase1">
         <h1>Welcome to AI Email Generator</h1>
-        <button onclick="nextPhase()">Get Started</button>
+        <p class="subtitle">Craft professional emails effortlessly with AI.</p>
+        <button class="cta-button" onclick="nextPhase()">Get Started</button>
     </div>
 
     <div class="container hidden" id="phase2">
         <h2>Generate an AI Email</h2>
-        <input type="text" id="sender" placeholder="Your Name">
-        <input type="text" id="receiver" placeholder="Recipient's Name">
-        <input type="text" id="recipientEmail" placeholder="Recipient's Email">
-        <input type="text" id="topic" placeholder="Enter Email Topic">
-        <input type="text" id="specialinstructions" placeholder="Special Instructions (if any)">
-        <button onclick="generateEmail()">Generate Email</button>
+        <div class="split-layout">  <div class="input-area"> <div class="input-group">
+                    <input type="text" id="sender" placeholder="Your Name">
+                    <input type="text" id="receiver" placeholder="Recipient's Name">
+                    <input type="text" id="recipientEmail" placeholder="Recipient's Email">
+                </div>
 
-        <h3>Generated Email</h3>
-        <textarea id="emailOutput" rows="10"></textarea>
+                <div class="input-group">
+                    <select id="topic" onchange="checkOtherTopic()" class="select-bar">
+                        <option value="" disabled selected>Select an Email Topic</option>
+                        <option value="Job Application">Job Application</option>
+                        <option value="Meeting Request">Meeting Request</option>
+                        <option value="Follow-up Email">Follow-up Email</option>
+                        <option value="Business Proposal">Business Proposal</option>
+                        <option value="Customer Support">Customer Support</option>
+                        <option value="Networking">Networking</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="customTopic" class="hidden" placeholder="Enter custom topic">
+                </div>
 
-        <button onclick="copyToClipboard()">Copy Email</button>
-        <button onclick="sendEmail()">Send Email</button>
-        <button onclick="goToOptions()">Options</button>
+                <div class="input-group">
+                    <input type="text" id="specialinstructions" placeholder="Special Instructions (if any)">
+                </div>
+
+                <button class="cta-button" onclick="generateEmail()">Generate Email</button>
+            </div>
+            <div class="output-area">  <h3>Generated Email</h3>
+                <textarea id="emailOutput" rows="10"></textarea>
+
+
+                <div class="button-group">
+                    <button class="secondary-button" onclick="copyToClipboard()">Copy Email</button>
+                    <button class="cta-button" onclick="sendEmail()">Send Email</button>
+                    <button class="secondary-button" onclick="goToOptions()">Options</button>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
     <div class="container hidden" id="phase3">
         <h2>Options</h2>
-        <button onclick="goBack()">Go Back</button>
-        <button onclick="goHome()">Home</button>
-        <h4 style="color: darkgray;">Built by - PANDT</h4>
+        <div class="button-group">
+            <button class="secondary-button" onclick="goBack()">Go Back</button>
+            <button class="cta-button" onclick="goHome()">Home</button>
+        </div>
+        <p class="footer-text">Built by <strong>PANDT</strong></p>
     </div>
 
-    <script>
-        function nextPhase() {
-            document.getElementById('phase1').classList.add('hidden');
-            document.getElementById('phase2').classList.remove('hidden');
-        }
-
-        function goToOptions() {
-            document.getElementById('phase2').classList.add('hidden');
-            document.getElementById('phase3').classList.remove('hidden');
-        }
-
-        function goBack() {
-            document.getElementById('phase3').classList.add('hidden');
-            document.getElementById('phase2').classList.remove('hidden');
-        }
-
-        function goHome() {
-            document.getElementById('phase3').classList.add('hidden');
-            document.getElementById('phase1').classList.remove('hidden');
-        }
-
-        function generateEmail() {
-            let sender = document.getElementById('sender').value.trim();
-            let receiver = document.getElementById('receiver').value.trim();
-            let topic = document.getElementById('topic').value.trim();
-            let recipientEmail = document.getElementById('recipientEmail').value.trim();
-            let specialinstructions = document.getElementById('specialinstructions').value.trim() || "Write correctly";
-            let emailOutput = document.getElementById('emailOutput');
-
-            if (!sender || !receiver || !topic || !recipientEmail) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            emailOutput.value = "Generating email...";
-
-            fetch("http://localhost:3000/generate-email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ sender, receiver, topic, email: recipientEmail, specialinstructions })
-            })
-            .then(response => response.json())
-            .then(data => {
-                emailOutput.value = data.email;
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                emailOutput.value = "Error generating email. Please check your server.";
-            });
-        }
-
-        function sendEmail() {
-            let sender = document.getElementById('sender').value.trim();
-            let recipientEmail = document.getElementById('recipientEmail').value.trim();
-            let emailContent = document.getElementById('emailOutput').value.trim();
-
-            if (!sender || !recipientEmail || !emailContent) {
-                alert("Please fill in all fields.");
-                return;
-            }
-
-            fetch("http://localhost:3000/send-email", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ sender, recipientEmail, emailContent })
-            })
-            .then(response => response.json())
-            .then(data => alert(data.message))
-            .catch(error => console.error("Error:", error));
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

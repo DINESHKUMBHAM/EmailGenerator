@@ -62,24 +62,6 @@ function generateEmail() {
     });
 }
 
-// 🔹 FIXED: Copy to Clipboard
-function copyToClipboard() {
-    let emailOutput = document.getElementById('emailOutput');
-
-    if (emailOutput.value.trim() === "") {
-        alert("No email to copy!");
-        return;
-    }
-
-    emailOutput.select();
-    emailOutput.setSelectionRange(0, 99999); // For mobile compatibility
-
-    navigator.clipboard.writeText(emailOutput.value)
-        .then(() => alert("Email copied to clipboard!"))
-        .catch(err => console.error("Failed to copy text:", err));
-}
-
-// 🔹 FIXED: Email Editing (Remove `readonly` from textarea in HTML)
 function sendEmail() {
     let sender = document.getElementById('sender').value.trim();
     let recipientEmail = document.getElementById('recipientEmail').value.trim();
